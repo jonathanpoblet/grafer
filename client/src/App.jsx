@@ -1,9 +1,7 @@
+import AppRoute from "./router/AppRoute";
+
 function App() {
-  return (
-    <div className="App">
-      grafer
-    </div>
-  )
+  return <AppRoute />;
 }
 
-export default App
+export default App;
