@@ -1,0 +1,43 @@
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  background-color: #1cb85f;
+  padding: 20px 0px;
+  color: #fff;
+}
+
+.footer-credits-text {
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.footer-links-link {
+  text-decoration: none;
+  margin: 0px 5px;
+}
+
+.footer-links-link-logo-w {
+  font-size: 30px;
+  color: #fff;
+}
+
+.footer-links-link-logo-ig {
+  font-size: 35px;
+  padding-top: 5px;
+  color: #fff;
+}
+
+@media screen and (max-width: 500px) {
+  .footer {
+    flex-direction: column;
+  }
+
+  .footer-credits-text {
+    font-size: 12px;
+    text-align: center;
+    padding: 10px 25px 0px 25px;
+  }
+}
