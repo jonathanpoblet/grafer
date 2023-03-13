@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Layout from "../components/layout/Layout";
+import Layout from "../components/Layout/Layout";
 
 const Home = lazy(() => import("../pages/Home/Home"));
 const NutritionTools = lazy(() =>
