@@ -50,13 +50,17 @@ export default function Header() {
       {openMenu && (
         <div className="header-navigate-mobile-nav">
           <Link
-          onClick={() => setOpenMenu(!openMenu)}
-          className="header-navigate-mobile-nav-link1" to="/">
+            onClick={() => setOpenMenu(!openMenu)}
+            className="header-navigate-mobile-nav-link1"
+            to="/"
+          >
             Inicio
           </Link>
           <Link
-          onClick={() => setOpenMenu(!openMenu)}
-          className="header-navigate-mobile-nav-link" to="/sobre-mi">
+            onClick={() => setOpenMenu(!openMenu)}
+            className="header-navigate-mobile-nav-link"
+            to="/sobre-mi"
+          >
             Sobre mí
           </Link>
           <Link
@@ -67,8 +71,10 @@ export default function Header() {
             Herramientas de nutrición
           </Link>
           <Link
-          onClick={() => setOpenMenu(!openMenu)}
-          className="header-navigate-mobile-nav-link" to="/contacto">
+            onClick={() => setOpenMenu(!openMenu)}
+            className="header-navigate-mobile-nav-link"
+            to="/contacto"
+          >
             Contacto
           </Link>
         </div>
