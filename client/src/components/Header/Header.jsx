@@ -49,19 +49,26 @@ export default function Header() {
       </div>
       {openMenu && (
         <div className="header-navigate-mobile-nav">
-          <Link className="header-navigate-mobile-nav-link1" to="/">
+          <Link
+          onClick={() => setOpenMenu(!openMenu)}
+          className="header-navigate-mobile-nav-link1" to="/">
             Inicio
           </Link>
-          <Link className="header-navigate-mobile-nav-link" to="/sobre-mi">
+          <Link
+          onClick={() => setOpenMenu(!openMenu)}
+          className="header-navigate-mobile-nav-link" to="/sobre-mi">
             Sobre mí
           </Link>
           <Link
+            onClick={() => setOpenMenu(!openMenu)}
             className="header-navigate-mobile-nav-link"
             to="/herramientas-de-nutricion"
           >
             Herramientas de nutrición
           </Link>
-          <Link className="header-navigate-mobile-nav-link" to="/contacto">
+          <Link
+          onClick={() => setOpenMenu(!openMenu)}
+          className="header-navigate-mobile-nav-link" to="/contacto">
             Contacto
           </Link>
         </div>

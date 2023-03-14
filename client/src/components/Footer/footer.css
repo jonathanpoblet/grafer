@@ -41,4 +41,8 @@
     text-align: center;
     padding: 10px 25px 0px 25px;
   }
+
+  .footer-links {
+    margin-top: 10px;
+  }
 }
