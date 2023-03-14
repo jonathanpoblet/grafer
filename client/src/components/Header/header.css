@@ -116,6 +116,12 @@
     border-top: 1px solid rgb(204, 204, 204);
   }
 
+  .header-navigate-mobile-nav-link:hover,
+  .header-navigate-mobile-nav-link1:hover {
+    background-color: #1cb85f;
+    color: #fff;
+  }
+
   .header-navigate-mobile-nav-menu {
     display: flex;
     font-size: 30px;
