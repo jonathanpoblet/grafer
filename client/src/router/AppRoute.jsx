@@ -10,6 +10,7 @@ const Recetaries = lazy(() => import("../pages/Recetaries/Recetaries"));
 const AboutMe = lazy(() => import("../pages/AboutMe/AboutMe"));
 const Contact = lazy(() => import("../pages/Contact/Contact"));
 const Spinner = lazy(() => import("../components/Spinner/Spinner"));
+const Tools = lazy(() => import("../pages/Tools/Tools"));
 const Detail = lazy(() => import("../pages/Detail/Detail"));
 
 export default function AppRoute() {
@@ -26,7 +27,7 @@ export default function AppRoute() {
             <Route path="/recetarios" element={<Recetaries />} />
             <Route path="/sobre-mi" element={<AboutMe />} />
             <Route path="/contacto" element={<Contact />} />
-            <Route path="/:tool/detail" element={<Detail />} />
+            <Route path="/herramientas-de-nutricion/:tool" element={<Tools />} />
           </Routes>
         </Layout>
       </BrowserRouter>
