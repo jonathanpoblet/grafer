@@ -11,6 +11,7 @@ const AboutMe = lazy(() => import("../pages/AboutMe/AboutMe"));
 const Contact = lazy(() => import("../pages/Contact/Contact"));
 const Spinner = lazy(() => import("../components/Spinner/Spinner"));
 const Tools = lazy(() => import("../pages/Tools/Tools"));
+const NotFound = lazy(() => import("../pages/NotFound/NotFound"));
 const Detail = lazy(() => import("../pages/Detail/Detail"));
 
 export default function AppRoute() {
@@ -27,6 +28,7 @@ export default function AppRoute() {
             <Route path="/recetarios" element={<Recetaries />} />
             <Route path="/sobre-mi" element={<AboutMe />} />
             <Route path="/contacto" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
             <Route
               path="/herramientas-de-nutricion/:tool"
               element={<Tools />}
