@@ -17,14 +17,24 @@ export default function NutritionTools() {
           length="10"
           endpoint="planes-alimentarios"
         />
-        <NutritionToolsCard img={EBook} title="E-books" length="6" endpoint="ebooks"/>
+        <NutritionToolsCard
+          img={EBook}
+          title="E-books"
+          length="6"
+          endpoint="ebooks"
+        />
         <NutritionToolsCard
           img={NutritionToolsImg}
           title="Herramientas para nutricionistas"
           length="8"
           endpoint="herramientas-para-nutricionistas"
         />
-        <NutritionToolsCard img={Recetary} title="Recetarios" length="15" endpoint="recetarios" />
+        <NutritionToolsCard
+          img={Recetary}
+          title="Recetarios"
+          length="15"
+          endpoint="recetarios"
+        />
       </div>
     </div>
   );

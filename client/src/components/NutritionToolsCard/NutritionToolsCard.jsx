@@ -3,7 +3,10 @@ import "./nutritionToolsCard.css";
 
 export default function NutritionToolsCard({ img, title, length, endpoint }) {
   return (
-    <Link to={`/herramientas-de-nutricion/${endpoint}`} className="nutrition-card">
+    <Link
+      to={`/herramientas-de-nutricion/${endpoint}`}
+      className="nutrition-card"
+    >
       <img
         className="nutrition-card-img"
         src={img}

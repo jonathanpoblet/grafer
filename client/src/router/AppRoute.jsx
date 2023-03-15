@@ -27,7 +27,10 @@ export default function AppRoute() {
             <Route path="/recetarios" element={<Recetaries />} />
             <Route path="/sobre-mi" element={<AboutMe />} />
             <Route path="/contacto" element={<Contact />} />
-            <Route path="/herramientas-de-nutricion/:tool" element={<Tools />} />
+            <Route
+              path="/herramientas-de-nutricion/:tool"
+              element={<Tools />}
+            />
           </Routes>
         </Layout>
       </BrowserRouter>
