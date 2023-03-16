@@ -1,0 +1,71 @@
+.toolCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    min-height: 390px;
+    height: 100%;
+    margin: 30px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 2px 2px 20px 0px rgb(192, 192, 192);
+    border-radius: 5px;
+}
+
+.toolCard-img {
+    width: 250px;
+    height: 300px;
+}
+
+.toolCard-title {
+    font-size: 16px;
+    font-weight: 100;
+    margin: 10px 25px;
+    text-align: center;
+}
+
+.toolCard-button {
+    text-decoration: none;
+    background-color: #1cb85f;
+    color: #fff;
+    border-radius: 5px;
+    padding: 7px 12px;
+    margin-bottom: 13px;
+}
+
+@media screen and (max-width: 640px) {
+    .toolCard {
+        margin: 5px;
+        width: 220px;
+        min-height: 0px;
+    }
+    
+    .toolCard-img {
+        width: 220px;
+        height: 250px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .toolCard {
+        margin: 5px;
+        width: 150px;
+        min-height: 0px;
+    }
+    
+    .toolCard-img {
+        width: 150px;
+        height: 180px;
+    }
+
+    .toolCard-title {
+        font-size: 12px;
+        margin: 10px 20px;
+    }
+    
+    .toolCard-button {
+        padding: 5px 10px;
+        margin-bottom: 10px;
+        font-size: 12px;
+    }
+}
