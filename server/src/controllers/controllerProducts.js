@@ -1,5 +1,8 @@
+import { containerProducts } from "../container/containerProducts.js";
+
 export async function controllerGetProducts(req, res) {
-  res.json({ products: ["pepa", "maria", "jose"] });
+  const products = await  containerProducts.getAll();
+  res.json(products);
 }
 
 export async function controllerPostProducts(req, res) {

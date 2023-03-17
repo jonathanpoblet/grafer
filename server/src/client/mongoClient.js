@@ -1,7 +1,7 @@
 import { MongoClient } from 'mongodb';
-import { hostMongo, portMongo, usernameMongo, passwordMongo, databaseMongo} from '../config/config.js';
+import { portMongo, usernameMongo, passwordMongo, databaseMongo} from '../config/config.js';
 
-const uri = `mongodb://${hostMongo}:${portMongo}`;
+const uri = `mongodb://0.0.0.0:${portMongo}`;
 
 export const mongoClient = new MongoClient(uri, {
     authSource: "admin",
