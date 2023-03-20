@@ -12,6 +12,7 @@ const Contact = lazy(() => import("../pages/Contact/Contact"));
 const Spinner = lazy(() => import("../components/Spinner/Spinner"));
 const Tools = lazy(() => import("../pages/Tools/Tools"));
 const NotFound = lazy(() => import("../pages/NotFound/NotFound"));
+const Panel = lazy(() => import("../pages/Panel/Panel"))
 const Detail = lazy(() => import("../pages/Detail/Detail"));
 
 export default function AppRoute() {
@@ -33,6 +34,7 @@ export default function AppRoute() {
               path="/herramientas-de-nutricion/:tool"
               element={<Tools />}
             />
+            <Route path="/adminGraciela-adminFernandez" element={<Panel />}/>
           </Routes>
         </Layout>
       </BrowserRouter>
