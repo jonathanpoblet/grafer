@@ -104,10 +104,10 @@ export default function Panel() {
                 placeholder="Tipo"
                 as="select"
               >
-                <option value="alimentaryPlan">Planes alimentarios</option>
-                <option value="ebook">E-books</option>
-                <option value="nutritionalTool">Herramientas para nutricionistas</option>
-                <option value="recetary">Recetarios</option>
+                <option value="alimentaryPlans">Planes alimentarios</option>
+                <option value="ebooks">E-books</option>
+                <option value="nutritionalTools">Herramientas para nutricionistas</option>
+                <option value="recetaries">Recetarios</option>
               </Field>
               {errors.type && touched.type ? (
                 <div className="contact-container-form-error">
