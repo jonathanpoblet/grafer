@@ -7,8 +7,6 @@ const addProductSchema = Yup.object().shape({
   description: Yup.string().max(300,"Descripción máxima 300 caracteres").required("Descripción requerida"),
   price: Yup.number().required("Precio requerido"),
   type: Yup.string().required("Tipo requerido"),
-  image: Yup.mixed().required("Imagen requerida"),
-  file: Yup.mixed().required("PDF requerido")
 });
 
 export default function Panel() {
@@ -16,17 +14,53 @@ export default function Panel() {
     title: "",
     description: "",
     price: "",
-    type: "",
-    image: "",
-    file:""
+    type: "alimentaryPlan",
   }
+
+  const uploadImage = async(file,pdf) => {
+    const data = new FormData();
+    const pdfData = new FormData();
+    data.append("file", file);
+    data.append("upload_preset", "grafer-images");
+    pdfData.append("file", pdf);
+    pdfData.append("upload_preset", "grafer-pdfs");
+    const request = await fetch(
+      "https://api.cloudinary.com/v1_1/dmx8e4tt0/image/upload",
+      {
+        method: "POST",
+        body: data,
+      }
+    )
+    const requestPdf = await fetch(
+      "https://api.cloudinary.com/v1_1/dmx8e4tt0/image/upload",
+      {
+        method: "POST",
+        body: pdfData,
+      }
+    )
+    const responseImg = await request.json();
+    const responsePdf = await requestPdf.json();
+    return {img: responseImg.secure_url, pdf: responsePdf.secure_url};
+  }
+
   return (
     <div>
       <h1>Agregar Productos</h1>
       <Formik
           initialValues={INITIAL__VALUES__ADD__PRODUCTS__FORM}
           validationSchema={addProductSchema}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={async (values) => {
+            const img = document.getElementById("img").files[0];
+            const pdf = document.getElementById("pdf").files[0];
+            if(img && pdf) {
+              const urlImage = await uploadImage(img,pdf);
+              values.image = urlImage.img;
+              values.pdf = urlImage.pdf;
+              console.log(values)
+            } else {
+              console.log("Mising data")
+            }
+          }}
         >
           {({ errors, touched }) => (
             <Form className="contact-container-form">
@@ -81,29 +115,9 @@ export default function Panel() {
                 </div>
               ) : null}
 
-              <Field
-                className="contact-container-form-field"
-                name="image"
-                placeholder="Tipo"
-                type="file"
-              />
-              {errors.image && touched.image ? (
-                <div className="contact-container-form-error">
-                  {errors.image}
-                </div>
-              ) : null}
+              <input type="file" id="img" />
 
-              <Field
-                className="contact-container-form-field"
-                name="file"
-                placeholder="Tipo"
-                type="file"
-              />
-              {errors.file && touched.file ? (
-                <div className="contact-container-form-error">
-                  {errors.file}
-                </div>
-              ) : null}
+              <input type="file" accept="application/pdf,application/vnd.ms-excel" id="pdf" />
               
 
               <button className="contact-container-form-button" type="submit">
