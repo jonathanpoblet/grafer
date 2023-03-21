@@ -5,23 +5,27 @@ import { getRequest } from "../../services/httpRequest";
 export const productSlice = createSlice({
   name: "products",
   initialState: {
-        list: "",
-        detail: ""
+    products: [],
+    tool:[]
+  },
+  reducers: {
+    setProducts:(state,action) => {
+      state.products = action.payload
+    },
+    setTool: (state,action) => {
+      state.tool = action.payload
     }
-//   ,
-//   reducers: {
-    
-//   }
+  }
 });
 
-// export const { } = productSlice.actions;
+export const { setProducts,setTool } = productSlice.actions;
 
 export default productSlice.reducer;
 
 export const getAllProducts = () => async dispatch => {
+  const products  = await getRequest("/api/products");
   try {
-    const { products } = await getRequest("/products/?items=15");
-    dispatch(setProductsList(products));
+    await dispatch(setProducts(products));
   } catch (error) {
     console.log(error);
   }

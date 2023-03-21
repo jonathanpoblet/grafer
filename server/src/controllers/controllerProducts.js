@@ -8,8 +8,11 @@ export async function controllerGetProducts(req, res) {
 
 export async function controllerPostProducts(req, res) {
   const product = {
-    alimentaryPlans: [],
-    identificator: randomUUID()
+    recetaries : [],
+    identificator: randomUUID(),
+    image: 'https://nutritionfacts.org/app/uploads/2020/01/IMG_8798.jpg',
+    title: 'Recetarios',
+    length: 0
   }
   await containerProducts.save(product)
   res.json({ succesfull: "Product addedd" });
@@ -29,7 +32,6 @@ export async function controllerPutProductCollection(req, res) {
   const identificator = req.params.identificator;
   const collection = await containerProducts.getById(identificator);
   if(collection) {
-    console.log(collection);
     const product = req.body
     if(collection["alimentaryPlans"]) {
       collection.alimentaryPlans.push(product);

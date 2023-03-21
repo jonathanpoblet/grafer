@@ -106,7 +106,7 @@ export default function Panel() {
               >
                 <option value="alimentaryPlans">Planes alimentarios</option>
                 <option value="ebooks">E-books</option>
-                <option value="nutritionalTools">Herramientas para nutricionistas</option>
+                <option value="courses">Herramientas para nutricionistas</option>
                 <option value="recetaries">Recetarios</option>
               </Field>
               {errors.type && touched.type ? (
