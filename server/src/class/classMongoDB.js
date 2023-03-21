@@ -2,7 +2,6 @@ import { mongoDatabase } from "../client/mongoClient.js";
 
 export class ClassMongoDB {
     constructor(collection) {
-        console.log(collection);
         this.collection = mongoDatabase.collection(collection);
     }
 
