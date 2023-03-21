@@ -1,40 +1,37 @@
+import { useEffect } from 'react';
+import { useDispatch,useSelector } from 'react-redux';
+import { getAllProducts } from '../../app/state/productsSlice';
 import NutritionToolsCard from "../../components/NutritionToolsCard/NutritionToolsCard";
-import AlimentaryPlan from "../../assets/plan-alimentario.png";
-import EBook from "../../assets/e-books.png";
-import NutritionToolsImg from "../../assets/nutrition-tools.png";
-import Recetary from "../../assets/recetary.png";
+
 
 import "./nutritionTools.css";
 
 export default function NutritionTools() {
+  const products = useSelector(store => store.products.products); 
+  localStorage.setItem('products', JSON.stringify(products))
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllProducts());
+  }, [])
+  
   return (
     <div className="nutrition">
       <h1 className="nutrition-title">Herramientas de nutrición</h1>
       <div className="nutrition-cards">
-        <NutritionToolsCard
-          img={AlimentaryPlan}
-          title="Planes alimentarios"
-          length="10"
-          endpoint="planes-alimentarios"
-        />
-        <NutritionToolsCard
-          img={EBook}
-          title="E-books"
-          length="6"
-          endpoint="ebooks"
-        />
-        <NutritionToolsCard
-          img={NutritionToolsImg}
-          title="Herramientas para nutricionistas"
-          length="8"
-          endpoint="herramientas-para-nutricionistas"
-        />
-        <NutritionToolsCard
-          img={Recetary}
-          title="Recetarios"
-          length="15"
-          endpoint="recetarios"
-        />
+        {
+          products.map(product => {
+            return(
+              <NutritionToolsCard
+                key={product.identificator}
+                img={product.image}
+                title={product.title}
+                length={product.length}
+                id={product.identificator}
+              />
+            )
+          })
+        }
       </div>
     </div>
   );

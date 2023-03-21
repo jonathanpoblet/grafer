@@ -31,7 +31,7 @@ export default function AppRoute() {
             <Route path="/contacto" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
             <Route
-              path="/herramientas-de-nutricion/:tool"
+              path="/herramientas-de-nutricion/:identificator"
               element={<Tools />}
             />
             <Route path="/adminGraciela-adminFernandez" element={<Panel />}/>

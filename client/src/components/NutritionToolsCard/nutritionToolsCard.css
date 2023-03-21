@@ -1,23 +1,26 @@
 .nutrition-card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   text-decoration: none;
   width: 320px;
-  height: 400px;
-  margin-top: 40px;
+  height: 340px;
+  margin: 100px 10px 0px 10px;
+  filter: brightness(1);
+}
+
+.nutrition-card:hover {
+  filter: brightness(0.8);
+  transition: 0.5s;
 }
 
 .nutrition-card-img {
   width: 100%;
-  filter: brightness(1);
+  height: 300px;
+  border-radius: 5px;
 }
 
-.nutrition-card-img:hover {
-  filter: brightness(0.8);
-  transition: 0.5s;
-}
 
 .nutrition-card-title {
   color: #111;
@@ -25,6 +28,7 @@
   text-align: center;
   width: 80%;
   height: 20px;
+  margin-top: 10px;
 }
 
 .nutrition-card-title-orange {
