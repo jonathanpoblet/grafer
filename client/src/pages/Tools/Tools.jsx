@@ -11,6 +11,7 @@ export default function Tools() {
           tool[tool.name].map((t => {
             return(
               <ToolCard
+                key={t.identificator}
                 image={t.image}
                 title={t.title}
                 id={t.identificator}

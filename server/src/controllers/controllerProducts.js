@@ -31,30 +31,12 @@ export async function controllerGetProductCollection(req,res) {
 }
 
 export async function controllerPutProductCollection(req, res) {
-  const identificator = req.params.identificator;
-  const collection = await containerProducts.getById(identificator);
-  if(collection) {
-    const product = req.body
-    if(collection["alimentaryPlans"]) {
-      collection.alimentaryPlans.push(product);
-      await containerProducts.changeById(identificator,collection);
-      res.json(collection);
-    } else if(collection["ebooks"]) {
-      collection.ebooks.push(product);
-      await containerProducts.changeById(identificator,collection);
-      res.json(collection);
-    } else if(collection["nutritionalTools"]) {
-      collection.nutritionalTools.push(product);
-      await containerProducts.changeById(identificator,collection);
-      res.json(collection);
-    } else if(collection["recetaries"]) {
-      collection.recetaries.push(product);
-      await containerProducts.changeById(identificator,collection);
-      res.json(collection);
-    } else {
-      res.json({error: "Invalid Type"})
-    }
-  } else {
-      res.status(404).json({error: `Collection with id ${identificator} not found`});
-  }
+  const collection = await containerProducts.getAll();
+  const product = req.body
+  product.identificator = randomUUID()
+  product.length++
+  const col = collection.find(c => c.name === product.name);
+  col[col.name].push(product);
+  await containerProducts.changeById(col.identificator,col)
+  res.json({succesfull: 'succesfull'})
 }

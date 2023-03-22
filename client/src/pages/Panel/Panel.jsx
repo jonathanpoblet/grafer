@@ -1,29 +1,29 @@
 import { Formik, Form, Field } from "formik";
+import { useDispatch } from "react-redux";
 import * as Yup from "yup";
+import { addProductToCollection } from "../../app/state/productsSlice";
 import "./panel.css";
 
 const addProductSchema = Yup.object().shape({
   title: Yup.string().required("Titulo requerido"),
   description: Yup.string().max(300,"Descripción máxima 300 caracteres").required("Descripción requerida"),
   price: Yup.number().required("Precio requerido"),
-  type: Yup.string().required("Tipo requerido"),
+  name: Yup.string().required("Tipo requerido"),
 });
 
 export default function Panel() {
+  const dispatch = useDispatch();
   const INITIAL__VALUES__ADD__PRODUCTS__FORM = {
     title: "",
     description: "",
     price: "",
-    type: "alimentaryPlan",
+    name: "alimentaryPlans",
   }
 
-  const uploadImage = async(file,pdf) => {
+  const uploadImage = async(file) => {
     const data = new FormData();
-    const pdfData = new FormData();
     data.append("file", file);
     data.append("upload_preset", "grafer-images");
-    pdfData.append("file", pdf);
-    pdfData.append("upload_preset", "grafer-pdfs");
     const request = await fetch(
       "https://api.cloudinary.com/v1_1/dmx8e4tt0/image/upload",
       {
@@ -31,16 +31,8 @@ export default function Panel() {
         body: data,
       }
     )
-    const requestPdf = await fetch(
-      "https://api.cloudinary.com/v1_1/dmx8e4tt0/image/upload",
-      {
-        method: "POST",
-        body: pdfData,
-      }
-    )
     const responseImg = await request.json();
-    const responsePdf = await requestPdf.json();
-    return {img: responseImg.secure_url, pdf: responsePdf.secure_url};
+    return responseImg.secure_url;
   }
 
   return (
@@ -51,12 +43,10 @@ export default function Panel() {
           validationSchema={addProductSchema}
           onSubmit={async (values) => {
             const img = document.getElementById("img").files[0];
-            const pdf = document.getElementById("pdf").files[0];
-            if(img && pdf) {
-              const urlImage = await uploadImage(img,pdf);
-              values.image = urlImage.img;
-              values.pdf = urlImage.pdf;
-              console.log(values)
+            if(img) {
+              const urlImage = await uploadImage(img);
+              values.image = urlImage;
+              dispatch(addProductToCollection(values))
             } else {
               console.log("Mising data")
             }
@@ -100,13 +90,12 @@ export default function Panel() {
 
               <Field
                 className="contact-container-form-field"
-                name="type"
+                name="name"
                 placeholder="Tipo"
                 as="select"
               >
                 <option value="alimentaryPlans">Planes alimentarios</option>
                 <option value="ebooks">E-books</option>
-                <option value="courses">Herramientas para nutricionistas</option>
                 <option value="recetaries">Recetarios</option>
               </Field>
               {errors.type && touched.type ? (
@@ -115,10 +104,7 @@ export default function Panel() {
                 </div>
               ) : null}
 
-              <input type="file" id="img" />
-
-              <input type="file" accept="application/pdf,application/vnd.ms-excel" id="pdf" />
-              
+              <input type="file" id="img" />              
 
               <button className="contact-container-form-button" type="submit">
                 Añadir producto

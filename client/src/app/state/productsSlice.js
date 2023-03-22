@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getRequest } from "../../services/httpRequest";
+import { getRequest, putRequest } from "../../services/httpRequest";
 
 
 export const productSlice = createSlice({
@@ -39,3 +39,12 @@ export const getProductsById = id => async dispatch => {
     console.log(error);
   }
 };
+
+export const addProductToCollection = product => async dispatch => {
+  const request = await putRequest(`/api/products/addProduct`,'',product)
+  try {
+    console.log(request);
+  } catch (error) {
+    console.log(error);
+  }
+}

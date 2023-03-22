@@ -37,7 +37,7 @@ export class ClassMongoDB {
             const operation = {identificator: id};
             const change = body;
             const set = {"$set" : change};
-            await this.collection.updateOne(operation,set);
+            return await this.collection.updateOne(operation,set);
         } catch (error) {
             throw new Error("No item changed: " + error);
         }
