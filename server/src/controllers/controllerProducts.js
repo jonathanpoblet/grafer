@@ -10,9 +10,11 @@ export async function controllerPostProducts(req, res) {
   const product = {
     recetaries : [],
     identificator: randomUUID(),
-    image: 'https://nutritionfacts.org/app/uploads/2020/01/IMG_8798.jpg',
+    image: 'https://res.cloudinary.com/dmx8e4tt0/image/upload/v1679498615/grafer-images/fiobhbkzhgksufs0ybkx.jpg',
     title: 'Recetarios',
-    length: 0
+    length: 0,
+    name: 'recetaries',
+    endpoint: 'recetarios'
   }
   await containerProducts.save(product)
   res.json({ succesfull: "Product addedd" });

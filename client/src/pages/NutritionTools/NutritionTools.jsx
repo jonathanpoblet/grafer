@@ -28,6 +28,8 @@ export default function NutritionTools() {
                 title={product.title}
                 length={product.length}
                 id={product.identificator}
+                endpoint={product.endpoint}
+                name={product.name}
               />
             )
           })
