@@ -41,9 +41,9 @@ export const getProductsById = id => async dispatch => {
 };
 
 export const addProductToCollection = product => async dispatch => {
-  const request = await putRequest(`/api/products/addProduct`,'',product)
   try {
-    console.log(request);
+    await putRequest(`/api/products/addProduct`,'',product)
+    return true
   } catch (error) {
     console.log(error);
   }

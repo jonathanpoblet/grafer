@@ -1,0 +1,95 @@
+.panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 100px;
+}
+  
+.panel-title {
+    font-weight: 100;
+    padding-bottom: 80px;
+    text-align: center;
+    width: 100%;
+    border-bottom: 1px solid rgb(212, 212, 212);
+}
+
+.panel-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 50%;
+    min-width: 600px;
+    margin-top: 80px;
+}
+  
+.panel-form-field {
+    width: 100%;
+    padding: 5px;
+    margin: 20px 0px;
+    border-radius: 5px;
+    border: 1px solid #111;
+    box-shadow: 2px 2px 10px 0px rgb(194, 194, 194);
+}
+  
+.panel-form-textarea {
+    width: 100%;
+    padding: 5px 5px 60px 5px;
+    margin: 10px 0px;
+    border-radius: 5px;
+    border: 1px solid #111;
+    box-shadow: 2px 2px 10px 0px rgb(194, 194, 194);
+    resize: none;
+    overflow: hidden;
+}
+  
+.panel-form-button {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+    padding: 7px;
+    border-radius: 5px;
+    background-color: #1cb85f;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+  
+.panel-form-button:hover {
+    background-color: #0aa54d;
+    border: 1px solid #111;
+}
+  
+.panel-form-error {
+    color: #c40000;
+    font-size: 13px;
+}
+
+.panel-subtitle {
+    margin: 50px 0px;
+    font-size: 25px;
+    font-weight: 100;
+}
+
+@media screen and (max-width: 750px) {
+    .panel-title {
+      padding-bottom: 40px;
+    }
+    .panel-form {
+        margin-top: 30px;
+    }
+  }
+  
+@media screen and (max-width: 660px) {
+    .panel-form {
+        min-width: 300px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .panel-title {
+        font-size: 25px;
+    }
+}

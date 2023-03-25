@@ -1,7 +1,10 @@
+import { useEffect } from 'react';
 import { Formik, Form, Field } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import * as Yup from "yup";
-import { addProductToCollection } from "../../app/state/productsSlice";
+import { addProductToCollection, getAllProducts } from "../../app/state/productsSlice";
+import PanelTable from '../../components/PanelTable/PanelTable';
+import { toast } from "react-toastify";
 import "./panel.css";
 
 const addProductSchema = Yup.object().shape({
@@ -12,6 +15,7 @@ const addProductSchema = Yup.object().shape({
 });
 
 export default function Panel() {
+  const products = useSelector(store => store.products.products); 
   const dispatch = useDispatch();
   const INITIAL__VALUES__ADD__PRODUCTS__FORM = {
     title: "",
@@ -35,61 +39,103 @@ export default function Panel() {
     return responseImg.secure_url;
   }
 
+  useEffect(() => {
+    dispatch(getAllProducts());
+  }, [])
+
   return (
-    <div>
-      <h1>Agregar Productos</h1>
+    <div className="panel">
+      <h1 className="panel-title">Panel de Administrador</h1>
       <Formik
           initialValues={INITIAL__VALUES__ADD__PRODUCTS__FORM}
           validationSchema={addProductSchema}
           onSubmit={async (values) => {
             const img = document.getElementById("img").files[0];
+            const password = document.getElementById("password")
             if(img) {
-              const urlImage = await uploadImage(img);
-              values.image = urlImage;
-              dispatch(addProductToCollection(values))
+              if(password.value === 'papafrita') {
+                const urlImage = await uploadImage(img);
+                values.image = urlImage;
+                const request = dispatch(addProductToCollection(values));
+                if(request) {
+                  toast.success('Producto Cargado', {
+                    position: "top-right",
+                    autoClose: 1111,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    });
+                  }
+                } else {
+                  toast.error('Contraseña de administrador incorrecta', {
+                    position: "top-right",
+                    autoClose: 1111,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    });
+                }
             } else {
-              console.log("Mising data")
+              toast.error('Faltan datos', {
+                    position: "top-right",
+                    autoClose: 1111,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    });
             }
           }}
         >
           {({ errors, touched }) => (
-            <Form className="contact-container-form">
+            <Form className="panel-form">
+
+              <input type="password" id="password" className='panel-form-field' placeholder='Contraseña de Administrador'/>              
+
               <Field
-                className="contact-container-form-field"
+                className="panel-form-field"
                 name="title"
                 placeholder="Titulo"
               />
               {errors.title && touched.title ? (
-                <div className="contact-container-form-error">
+                <div className="panel-form-error">
                   {errors.title}
                 </div>
               ) : null}
 
               <Field
                 as="textarea"
-                className="contact-container-form-textarea"
+                className="panel-form-textarea"
                 name="description"
                 placeholder="Description"
               />
               {errors.description && touched.description ? (
-                <div className="contact-container-form-error">
+                <div className="panel-form-error">
                   {errors.description}
                 </div>
               ) : null}
 
               <Field
-                className="contact-container-form-field"
+                className="panel-form-field"
                 name="price"
                 placeholder="Precio ARS"
               />
               {errors.price && touched.price ? (
-                <div className="contact-container-form-error">
+                <div className="panel-form-error">
                   {errors.price}
                 </div>
               ) : null}
 
               <Field
-                className="contact-container-form-field"
+                className="panel-form-field"
                 name="name"
                 placeholder="Tipo"
                 as="select"
@@ -99,19 +145,24 @@ export default function Panel() {
                 <option value="recetaries">Recetarios</option>
               </Field>
               {errors.type && touched.type ? (
-                <div className="contact-container-form-error">
+                <div className="panel-form-error">
                   {errors.type}
                 </div>
               ) : null}
 
               <input type="file" id="img" />              
 
-              <button className="contact-container-form-button" type="submit">
+              <button className="panel-form-button" type="submit">
                 Añadir producto
               </button>
             </Form>
           )}
         </Formik>
+
+        <h2 className='panel-subtitle'>Productos</h2>
+        <PanelTable
+          products={products}
+        />
     </div>
   )
 }

@@ -21,12 +21,12 @@
   position: absolute;
   font-family: "Stalemate", cursive;
   font-weight: 500;
-  color: #fff;
+  color: #111;
   border-radius: 5px;
   padding: 10px 20px;
   font-size: 80px;
-  top: 10%;
-  left: 10%;
+  top: 20%;
+  left: 14%;
 }
 
 .home-background-title-back {
@@ -34,6 +34,7 @@
   font-family: "Stalemate", cursive;
   padding: 0px 30px;
   border-radius: 5px;
+  color: #fff
 }
 
 .home-choseus {
@@ -83,9 +84,9 @@
 .home-information {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  width: 790px;
+  width: 1000px;
 }
 
 .home-information-container {
@@ -134,6 +135,16 @@
   }
 }
 
+@media screen and (max-width: 1030px) {
+  .home-information {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 800px;
+  }
+}
+
 @media screen and (max-width: 900px) {
   .home-choseus-container-img {
     width: 350px;
@@ -146,6 +157,13 @@
 }
 
 @media screen and (max-width: 785px) {
+  .home-choseus {
+    margin: 50px 0px;
+  }
+  .home-choseus-title {
+    margin-bottom: 30px;
+    font-size: 25px;
+  }
   .home-choseus-container {
     flex-direction: column;
     justify-content: center;

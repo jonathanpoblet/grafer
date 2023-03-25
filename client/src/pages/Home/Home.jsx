@@ -1,5 +1,4 @@
-import HomeImg from "../../assets/home-background.jpeg";
-import portada from "../../assets/portada.jfif";
+import portada from "../../assets/background.jpeg";
 import HomePicture from "../../assets/home-picture.png";
 import { AiFillHeart, AiFillFilePdf, AiFillHourglass } from "react-icons/ai";
 import "./home.css";
