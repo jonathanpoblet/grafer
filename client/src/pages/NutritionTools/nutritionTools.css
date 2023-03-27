@@ -24,12 +24,11 @@
   width: 100%;
 }
 
-@media screen and (max-width:890px) {
+@media screen and (max-width: 890px) {
   .nutrition-cards {
     flex-wrap: wrap;
   }
 }
-
 
 @media screen and (max-width: 670px) {
   .nutrition {

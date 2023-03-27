@@ -2,8 +2,7 @@ import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "../components/Layout/Layout";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
-
+import "react-toastify/dist/ReactToastify.css";
 
 const Home = lazy(() => import("../pages/Home/Home"));
 const NutritionTools = lazy(() =>
@@ -15,7 +14,7 @@ const Contact = lazy(() => import("../pages/Contact/Contact"));
 const Spinner = lazy(() => import("../components/Spinner/Spinner"));
 const Tools = lazy(() => import("../pages/Tools/Tools"));
 const NotFound = lazy(() => import("../pages/NotFound/NotFound"));
-const Panel = lazy(() => import("../pages/Panel/Panel"))
+const Panel = lazy(() => import("../pages/Panel/Panel"));
 const Detail = lazy(() => import("../pages/Detail/Detail"));
 
 export default function AppRoute() {
@@ -37,7 +36,7 @@ export default function AppRoute() {
               path="/herramientas-de-nutricion/:identificator"
               element={<Tools />}
             />
-            <Route path="/adminGraciela-adminFernandez" element={<Panel />}/>
+            <Route path="/adminGraciela-adminFernandez" element={<Panel />} />
           </Routes>
         </Layout>
       </BrowserRouter>

@@ -2,14 +2,13 @@ import axios from "axios";
 
 const URL = import.meta.env.VITE_API_URL;
 
-
 export const postRequest = async (dataObject, endpoint) => {
   try {
     const { data } = await axios.post(URL + endpoint, dataObject, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-      }
+      },
     });
 
     return data;
@@ -28,10 +27,10 @@ export const getRequest = async (endpoint) => {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        'Access-Control-Allow-Origin': '*',
-      }
+        "Access-Control-Allow-Origin": "*",
+      },
     });
-    
+
     return data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -45,17 +44,13 @@ export const getRequest = async (endpoint) => {
   }
 };
 
-export const putRequest = async (
-  endpoint,
-  id,
-  dataUpdate
-) => {
+export const putRequest = async (endpoint, id, dataUpdate) => {
   try {
     const { data } = await axios.put(URL + endpoint + id, dataUpdate, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-      }
+      },
     });
 
     return data;
@@ -76,7 +71,7 @@ export const deleteRequest = async (endpoint, id) => {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-      }
+      },
     });
 
     return data;
