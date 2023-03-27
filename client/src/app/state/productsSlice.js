@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { deleteRequest, getRequest, putRequest } from "../../services/httpRequest";
+import { getRequest, putRequest } from "../../services/httpRequest";
 
 export const productSlice = createSlice({
   name: "products",
   initialState: {
     products: [],
     tool: [],
+    detail:{}
   },
   reducers: {
     setProducts: (state, action) => {
@@ -14,10 +15,13 @@ export const productSlice = createSlice({
     setTool: (state, action) => {
       state.tool = action.payload;
     },
+    setDetail: (state,action) => {
+      state.detail = action.payload
+    }
   },
 });
 
-export const { setProducts, setTool } = productSlice.actions;
+export const { setProducts, setTool, setDetail } = productSlice.actions;
 
 export default productSlice.reducer;
 

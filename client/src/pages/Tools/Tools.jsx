@@ -4,16 +4,14 @@ import "./tools.css";
 export default function Tools() {
   const tool = JSON.parse(localStorage.getItem("tool"));
   return (
-    <div className="tools">
+    <div className={tool[tool.name].length === 0 ? 'tools-noproduct' : 'tools'}>
       <h1 className="tools-title">{tool.title}</h1>
       <div className="tools-container">
         {tool[tool.name].map((t) => {
           return (
             <ToolCard
               key={t.identificator}
-              image={t.image}
-              title={t.title}
-              id={t.identificator}
+              tool ={t}
             />
           );
         })}

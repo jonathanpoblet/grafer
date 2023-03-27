@@ -49,7 +49,7 @@
   .toolCard {
     margin: 5px;
     width: 150px;
-    min-height: 0px;
+    height: 250px;
   }
 
   .toolCard-img {

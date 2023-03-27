@@ -9,7 +9,7 @@ import "./panel.css";
 
 const addProductSchema = Yup.object().shape({
   title: Yup.string().required("Titulo requerido"),
-  description: Yup.string().max(300,"Descripción máxima 300 caracteres").required("Descripción requerida"),
+  description: Yup.string().max(400,"Descripción máxima 400 caracteres").required("Descripción requerida"),
   price: Yup.number().required("Precio requerido"),
   name: Yup.string().required("Tipo requerido"),
 });
