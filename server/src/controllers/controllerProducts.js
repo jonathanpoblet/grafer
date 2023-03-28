@@ -1,5 +1,6 @@
 import { containerProducts } from "../container/containerProducts.js";
 import { randomUUID } from 'crypto';
+import mercadopago from 'mercadopago'
 
 export async function controllerGetProducts(req, res) {
   const products = await containerProducts.getAll();
@@ -80,4 +81,47 @@ export async function controllerDeleteProductCollection(req, res) {
   } else {
     res.status(400).json({error: 'No product found'})
   }
+}
+
+export async function controllerPostPurchase(req, res) {
+    mercadopago.configure({
+    access_token: 'TEST-2951200354204611-032813-570570465791ddf96694274ad62286fd-326487698',
+  })
+
+  const { user, product } = req.body
+
+  const preference = {
+    binary_mode: true,
+    items: [
+      {
+        id: product.identificator,
+        title: product.title,
+        description: 'Esta es la descripción',
+        picture_url: product.image,
+        quantity: 1,
+        currency_id: "ARS",
+        unit_price: 20
+      }
+    ],
+    payer: {
+      name: user.name,
+      surname: user.surname,
+      email: user.email
+    },
+
+    back_urls: {
+      success: "http://localhost:5173/herramientas-de-nutricion",
+      failure: "http://localhost:5173/herramientas-de-nutricion",
+      pending: "http://localhost:5173/herramientas-de-nutricion"
+    },
+    auto_return: "approved"
+  }
+      
+  mercadopago.preferences.create(preference)
+    .then(function (response) {
+      res.status(200).json({global: response.body.id})
+    })
+    .catch((error) => {
+      res.status(500).json({global: error})
+    })
 }
