@@ -4,6 +4,7 @@ import {
   controllerGetProductCollection,
   controllerGetProducts,
   controllerPostProducts,
+  controllerPostPurchase,
   controllerPutProductCollection,
 } from "../controllers/controllerProducts.js";
 
@@ -13,4 +14,5 @@ routerProducts.get("/", controllerGetProducts);
 routerProducts.post("/", controllerPostProducts);
 routerProducts.get("/:identificator", controllerGetProductCollection);
 routerProducts.put("/addProduct", controllerPutProductCollection);
-routerProducts.put("/deleteProduct", controllerDeleteProductCollection)
+routerProducts.put("/deleteProduct", controllerDeleteProductCollection);
+routerProducts.post("/purchase",controllerPostPurchase)
