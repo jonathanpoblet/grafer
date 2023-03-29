@@ -1,18 +1,18 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { deleteProductFromCollection } from '../../app/state/productsSlice.js';
+import React from "react";
+import { useDispatch } from "react-redux";
+import { deleteProductFromCollection } from "../../app/state/productsSlice.js";
 import { toast } from "react-toastify";
 import "./panelTable.css";
 
-export default function PanelTable({products}) {
-  const dispatch = useDispatch()
+export default function PanelTable({ products }) {
+  const dispatch = useDispatch();
   const actionDeleteProduct = async (product) => {
     const productData = {
       identificator: product.identificator,
-      name: product.name
-    }
-    const request = dispatch(deleteProductFromCollection(productData))
-    if(request) {
+      name: product.name,
+    };
+    const request = dispatch(deleteProductFromCollection(productData));
+    if (request) {
       toast.success("Producto Borrado", {
         position: "top-right",
         autoClose: 1111,
@@ -58,7 +58,12 @@ export default function PanelTable({products}) {
                     <th className="table-body-th">{p.title}</th>
                     <th className="table-body-th">$ {p.price}</th>
                     <th className="table-body-th">
-                      <button className="table-body-button" onClick={() => actionDeleteProduct(p)}>Eliminar</button>
+                      <button
+                        className="table-body-button"
+                        onClick={() => actionDeleteProduct(p)}
+                      >
+                        Eliminar
+                      </button>
                     </th>
                   </tr>
                 );

@@ -1,5 +1,8 @@
+import { useDispatch } from "react-redux";
+import { sendEmail } from "../../app/state/productsSlice";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
+import { toast } from "react-toastify";
 import "./contact.css";
 
 const contactSchema = Yup.object().shape({
@@ -9,17 +12,19 @@ const contactSchema = Yup.object().shape({
     .max(20, "Asunto máximo 20 caracteres")
     .required("Asunto requerido"),
   message: Yup.string()
-    .max(100, "Mensaje máximo 100 caracteres")
+    .max(300, "Mensaje máximo 300 caracteres")
     .required("Mensaje requerido"),
 });
 
 export default function Contact() {
+  const dispatch = useDispatch();
   const INITIAL__VALUES__CONTACT__FORM = {
     name: "",
     email: "",
     title: "",
     message: "",
   };
+
   return (
     <div className="contact">
       <h1 className="contact-title">Contacto</h1>
@@ -36,7 +41,32 @@ export default function Contact() {
         <Formik
           initialValues={INITIAL__VALUES__CONTACT__FORM}
           validationSchema={contactSchema}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={(values) => {
+            const request = dispatch(sendEmail(values));
+            if (request) {
+              toast.success("Mail enviado", {
+                position: "top-right",
+                autoClose: 1111,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+              });
+            } else {
+              toast.error("Ha surgido un error", {
+                position: "top-right",
+                autoClose: 1111,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+              });
+            }
+          }}
         >
           {({ errors, touched }) => (
             <Form className="contact-container-form">

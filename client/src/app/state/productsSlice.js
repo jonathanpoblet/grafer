@@ -1,12 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getRequest, putRequest } from "../../services/httpRequest";
+import {
+  getRequest,
+  postRequest,
+  putRequest,
+} from "../../services/httpRequest";
 
 export const productSlice = createSlice({
   name: "products",
   initialState: {
     products: [],
     tool: [],
-    detail:{}
+    detail: {},
   },
   reducers: {
     setProducts: (state, action) => {
@@ -15,9 +19,9 @@ export const productSlice = createSlice({
     setTool: (state, action) => {
       state.tool = action.payload;
     },
-    setDetail: (state,action) => {
-      state.detail = action.payload
-    }
+    setDetail: (state, action) => {
+      state.detail = action.payload;
+    },
   },
 });
 
@@ -53,12 +57,26 @@ export const addProductToCollection = (product) => async (dispatch) => {
   }
 };
 
-export const deleteProductFromCollection = (productData) => async (dispatch) => {
+export const deleteProductFromCollection =
+  (productData) => async (dispatch) => {
+    try {
+      const request = await putRequest(
+        "/api/products/deleteProduct",
+        "",
+        productData
+      );
+      await dispatch(setProducts(request));
+      return true;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+export const sendEmail = (emailData) => async (dispatch) => {
   try {
-    const request = await putRequest('/api/products/deleteProduct','', productData);
-    await dispatch(setProducts(request));
-    return true
+    await postRequest(emailData, "/api/contact");
+    return true;
   } catch (error) {
     console.log(error);
   }
-}
+};
