@@ -15,14 +15,15 @@ const saveUserDataSchema = Yup.object().shape({
 export default function Detail() {
   const dispatch = useDispatch();
   const [stage,setStage] = useState(1)
-  const user = useSelector(store => store.user.user);
   const product = JSON.parse(localStorage.getItem('detail'))
-  const detail = JSON.parse(localStorage.getItem("detail"));
+  const user = JSON.parse(localStorage.getItem('user'));
   const INITIAL__VALUES__SAVE__DATA__FORM = {
     name: "",
     surname: "",
     email: "",
   };
+  
+
   useEffect(() => {
     if(stage === 2) {
       const fetchCheckout = async () => {
@@ -45,11 +46,10 @@ export default function Detail() {
           script.setAttribute('data-preference-id', data.global)
           document.body.appendChild(script)
           
-          const mp = await new window.MercadoPago('TEST-3541ddb5-b401-46d3-b58f-9e2128b4d9ea', {
+          const mp = new window.MercadoPago('TEST-740b3cb4-a570-4dd2-bf15-74abc09b2f94', {
             locale: 'es-AR'
           })
-          console.log(mp);
-  
+
           mp.checkout({
             preference: {
               id: data.global
@@ -62,21 +62,21 @@ export default function Detail() {
         }
       }
   
-      fetchCheckout()
+      const peticion = fetchCheckout()
     }
-  }, [user])
+  }, [stage])
   return (
     <div className="detail">
-      <img className="detail-img" src={detail.image} alt={detail.title} />
+      <img className="detail-img" src={product.image} alt={product.title} />
       <div className="detail-container">
-        <h2 className="detail-container-title">{detail.title}</h2>
-        <p className="detail-container-price">ARS $ {detail.price}</p>
-        <p className="detail-container-description">{detail.description}</p>
+        <h2 className="detail-container-title">{product.title}</h2>
+        <p className="detail-container-price">ARS $ {product.price}</p>
+        <p className="detail-container-description">{product.description}</p>
         <Formik
           initialValues={INITIAL__VALUES__SAVE__DATA__FORM}
           validationSchema={saveUserDataSchema}
           onSubmit={async (values) => {
-            dispatch(postUser(values))
+            localStorage.setItem('user', JSON.stringify(values));
             setStage(2)
           }}
         >

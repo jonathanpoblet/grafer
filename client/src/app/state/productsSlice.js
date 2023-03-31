@@ -80,3 +80,12 @@ export const sendEmail = (emailData) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const sendProduct = (info) => async (dispatch) => {
+  try {
+    await postRequest(info, "/api/products/sendProduct");
+    return true;
+  } catch (error) {
+    console.log(error);
+  }
+};

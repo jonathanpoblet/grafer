@@ -5,6 +5,9 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Home = lazy(() => import("../pages/Home/Home"));
+const Success = lazy(() => import("../pages/Success/Success"));
+const Failure = lazy(() => import("../pages/Failure/Failure"));
+const Pending = lazy(() => import("../pages/Pending/Pending"));
 const NutritionTools = lazy(() =>
   import("../pages/NutritionTools/NutritionTools")
 );
@@ -24,6 +27,9 @@ export default function AppRoute() {
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/success" element={<Success />} />
+            <Route path="/failure" element={<Failure />} />
+            <Route path="/pending" element={<Pending />} />
             <Route
               path="/herramientas-de-nutricion"
               element={<NutritionTools />}
