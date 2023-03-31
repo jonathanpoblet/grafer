@@ -1,6 +1,7 @@
+import mercadopago from 'mercadopago'
 import { containerProducts } from "../container/containerProducts.js";
 import { randomUUID } from 'crypto';
-import mercadopago from 'mercadopago'
+import { transporter } from "../email/index.js";
 
 export async function controllerGetProducts(req, res) {
   const products = await containerProducts.getAll();
@@ -85,7 +86,7 @@ export async function controllerDeleteProductCollection(req, res) {
 
 export async function controllerPostPurchase(req, res) {
     mercadopago.configure({
-    access_token: 'TEST-2951200354204611-032813-570570465791ddf96694274ad62286fd-326487698',
+    access_token: 'TEST-4093073109802341-032912-19a15bb77eeb4a9f1263ae2d3cb51bd8-1341353040',
   })
 
   const { user, product } = req.body
@@ -96,11 +97,11 @@ export async function controllerPostPurchase(req, res) {
       {
         id: product.identificator,
         title: product.title,
-        description: 'Esta es la descripción',
+        description: 'Grafer product',
         picture_url: product.image,
         quantity: 1,
         currency_id: "ARS",
-        unit_price: 20
+        unit_price: 1
       }
     ],
     payer: {
@@ -108,11 +109,10 @@ export async function controllerPostPurchase(req, res) {
       surname: user.surname,
       email: user.email
     },
-
     back_urls: {
-      success: "http://localhost:5173/herramientas-de-nutricion",
-      failure: "http://localhost:5173/herramientas-de-nutricion",
-      pending: "http://localhost:5173/herramientas-de-nutricion"
+      success: "http://localhost:5173/success",
+      failure: "http://localhost:5173/failure",
+      pending: "http://localhost:5173/pending"
     },
     auto_return: "approved"
   }
@@ -124,4 +124,26 @@ export async function controllerPostPurchase(req, res) {
     .catch((error) => {
       res.status(500).json({global: error})
     })
+    
+}
+
+export async function controllerPostSendProduct(req, res) {
+  const product = req.body.product
+  const user = req.body.user
+  if(user.name && user.email && user.surname && product.title && product.price) {
+    await transporter.sendMail({
+      from: 'Servidor Node.js',
+      to: 'jonathanpoblet228@gmail.com',
+      subject: 'Compra realizada',
+      html: `<h3>Nueva compra de:</h3><p>Nombre: ${user.name} ${user.surname}</p><p>Email: ${user.email}</p><p>Producto: <br>$ ${product.price} <br>${product.title}</p>`
+  })
+
+  await transporter.sendMail({
+    from: 'Servidor Node.js',
+    to: user.email,
+    subject: 'Compra realizada',
+    html: `<h4>Nueva compra</h4><p>Producto: $ ${product.price} ${product.title}</p>`
+  })
+    res.json({ succesfull: "Emails send" });
+  } else res.status(404).json({error: 'Faltan datos de envio'});
 }
