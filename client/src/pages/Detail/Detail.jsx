@@ -2,9 +2,12 @@ import { useState,useEffect } from "react";
 import { Formik, Form, Field } from "formik";
 import { useDispatch,useSelector } from 'react-redux';
 import { postUser } from "../../app/state/userSlice";
+import { toast } from "react-toastify";
+
 import * as Yup from "yup";
 
 import "./detail.css";
+import { getRequest, postRequest } from "../../services/httpRequest";
 
 const saveUserDataSchema = Yup.object().shape({
   name: Yup.string().required("Nombre requerido"),
@@ -17,52 +20,39 @@ export default function Detail() {
   const [stage,setStage] = useState(1)
   const product = JSON.parse(localStorage.getItem('detail'))
   const user = JSON.parse(localStorage.getItem('user'));
+  const [isLoadingPay, setIsLoadingPay] = useState(false);
   const INITIAL__VALUES__SAVE__DATA__FORM = {
     name: "",
     surname: "",
     email: "",
   };
+
+  const handlePay = () => {
+    setIsLoadingPay(true);
+
+    postRequest({user,product},"/mpago/process")
+      .then(res => {
+        window.location.href = res.link;
+      })
+      .catch(err => {
+        setIsLoadingPay(false);
+        toast.error("Se ha producido un error al generar tu pago, intentá en unos minutos", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored"
+        });
+      });
+  };
   
 
   useEffect(() => {
     if(stage === 2) {
-      const fetchCheckout = async () => {
-        const res = await fetch('http://localhost:3000/api/products/purchase', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            user,
-            product
-          }),
-        })
-        const data = await res.json()
-  
-        if(data.global) {
-          const script = document.createElement('script')
-          script.type = 'text/javascript'
-          script.src = 'https://sdk.mercadopago.com/js/v2'
-          script.setAttribute('data-preference-id', data.global)
-          document.body.appendChild(script)
-          
-          const mp = new window.MercadoPago('TEST-740b3cb4-a570-4dd2-bf15-74abc09b2f94', {
-            locale: 'es-AR'
-          })
-
-          mp.checkout({
-            preference: {
-              id: data.global
-            },
-            render: {
-              container: '.cho-container',
-              label: 'Pagar',
-            }
-          });
-        }
-      }
-  
-      const peticion = fetchCheckout()
+      handlePay()
     }
   }, [stage])
   return (
@@ -110,7 +100,7 @@ export default function Detail() {
               ) : null}
 
               <button className="detail-form-button" type="submit">
-                Guardar información de compra
+                Comprar
               </button>
             </Form>
           )}

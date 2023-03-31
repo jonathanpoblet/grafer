@@ -1,0 +1,40 @@
+.success {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.success-message {
+    width: 500px;
+    text-align: center;
+    margin: 10px 5px;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.success-message-orange {
+    background-color: #f8b534;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 5px;
+}
+
+.success-message-green {
+    background-color: #1cb85f;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width:530px) {
+    .success-message {
+        width: 80%;
+        text-align: center;
+        margin: 10px 5px;
+        font-size: 20px;
+        line-height: 30px;
+    }
+}
+
