@@ -28,10 +28,7 @@ export default function NutritionToolsCard({
         src={img}
         alt="herramientas de nutrición imagen"
       />
-      <h4 className="nutrition-card-title">
-        {title}
-        <span className="nutrition-card-title-orange"> ({length})</span>
-      </h4>
+
     </Link>
   );
 }

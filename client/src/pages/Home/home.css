@@ -15,26 +15,22 @@
 .home-background-img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .home-background-title {
   position: absolute;
-  font-family: "Stalemate", cursive;
-  font-weight: 500;
-  color: #111;
+  font-weight: 100;
+  color: #fff;
   border-radius: 5px;
   padding: 10px 20px;
-  font-size: 80px;
+  font-size: 50px;
   top: 20%;
-  left: 14%;
+  left: 14.5%;
 }
 
 .home-background-title-back {
-  background-color: #1cb860c0;
-  font-family: "Stalemate", cursive;
-  padding: 0px 30px;
   border-radius: 5px;
-  color: #fff;
 }
 
 .home-choseus {
@@ -129,11 +125,6 @@
   margin-top: 50px;
 }
 
-@media screen and (max-width: 1300px) {
-  .home-background-title {
-    font-size: 70px;
-  }
-}
 
 @media screen and (max-width: 1030px) {
   .home-information {
@@ -146,6 +137,10 @@
 }
 
 @media screen and (max-width: 900px) {
+  .home-background-title {
+    font-size: 40px;
+    left: 10%;
+  }
   .home-choseus-container-img {
     width: 350px;
     height: 270px;
@@ -197,23 +192,21 @@
   }
 }
 
+@media screen and (max-width: 600px) {
+  .home-background-title {
+    font-size: 30px;
+    left: 5%;
+  }
+}
+
 @media screen and (max-width: 500px) {
   .home-background {
     height: 80vh;
-  }
-  .home-background-title {
-    font-size: 50px;
-    left: 0%;
   }
 
   .home-choseus {
     margin-top: 100px;
     margin-bottom: 50px;
-  }
-
-  .home-choseus-title {
-    font-size: 25px;
-    margin-bottom: 40px;
   }
 
   .home-choseus-container-img {
@@ -241,5 +234,11 @@
 
   .home-information-button {
     font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 426px) {
+  .home-background-title {
+    font-size: 25px;
   }
 }

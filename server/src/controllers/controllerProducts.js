@@ -12,7 +12,7 @@ export async function controllerPostProducts(req, res) {
   const product1 = {
     alimentaryPlans : [],
     identificator: randomUUID(),
-    image: 'https://res.cloudinary.com/dmx8e4tt0/image/upload/v1679498610/grafer-images/pps9couhashed5hgavsn.jpg',
+    image: 'https://res.cloudinary.com/dmx8e4tt0/image/upload/v1680542501/grafer-images/rduc4ajnke6uwq9bljd1.png',
     title: 'Planes Alimentarios',
     length: 0,
     name: 'alimentaryPlans',
@@ -21,7 +21,7 @@ export async function controllerPostProducts(req, res) {
   const product2 = {
     ebooks : [],
     identificator: randomUUID(),
-    image: 'https://res.cloudinary.com/dmx8e4tt0/image/upload/v1679498612/grafer-images/aulesk9cmjhtondkhugz.jpg',
+    image: 'https://res.cloudinary.com/dmx8e4tt0/image/upload/v1680542505/grafer-images/k2hbdmlitephfmevbk19.png',
     title: 'E-books',
     length: 0,
     name: 'ebooks',
@@ -30,7 +30,7 @@ export async function controllerPostProducts(req, res) {
   const product3 = {
     recetaries : [],
     identificator: randomUUID(),
-    image: 'https://res.cloudinary.com/dmx8e4tt0/image/upload/v1679498615/grafer-images/fiobhbkzhgksufs0ybkx.jpg',
+    image: 'https://res.cloudinary.com/dmx8e4tt0/image/upload/v1680542510/grafer-images/oehcec14ugcw6orodtqt.png',
     title: 'Recetarios',
     length: 0,
     name: 'recetaries',

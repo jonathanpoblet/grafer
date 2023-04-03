@@ -11,7 +11,7 @@ export default function Header() {
     <div className="header">
       <div className="header-top">
         <p className="header-top-message">
-          Para atención personalizada comunicarse al +54 11 6148 9912
+          Para atención personalizada comunicarse al +54 9 11 6148 9912
         </p>
       </div>
       <div className="header-navigate">
@@ -58,21 +58,21 @@ export default function Header() {
           </Link>
           <Link
             onClick={() => setOpenMenu(!openMenu)}
-            className="header-navigate-mobile-nav-link"
+            className="header-navigate-mobile-nav-link2"
             to="/sobre-mi"
           >
             Sobre mí
           </Link>
           <Link
             onClick={() => setOpenMenu(!openMenu)}
-            className="header-navigate-mobile-nav-link"
+            className="header-navigate-mobile-nav-link1"
             to="/herramientas-de-nutricion"
           >
             Herramientas de nutrición
           </Link>
           <Link
             onClick={() => setOpenMenu(!openMenu)}
-            className="header-navigate-mobile-nav-link"
+            className="header-navigate-mobile-nav-link2"
             to="/contacto"
           >
             Contacto

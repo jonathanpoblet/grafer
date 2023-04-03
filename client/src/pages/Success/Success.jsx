@@ -29,7 +29,7 @@ export default function Success() {
     <div className='success'>
       <p className='success-message'><span className='success-message-orange'>Felicidades</span> por tu nueva compra!</p>
       <p className='success-message'>Revisa tu email, allí encontras la información correspondiente a la compra y el link a nuestro producto digital para que lo puedas descargar.</p>
-      <p className='success-message'>Muchas gracias, <span className='success-message-green'>Graciela!!!</span></p>
+      <p className='success-message'>Muchas gracias, <span className='success-message-green'>Lic. Grafer!!!</span></p>
     </div>
   )
 }
