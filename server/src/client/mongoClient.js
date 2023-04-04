@@ -1,16 +1,14 @@
 import { MongoClient } from 'mongodb';
 import { portMongo, usernameMongo, passwordMongo, databaseMongo} from '../config/config.js';
 
-const uri = `mongodb://0.0.0.0:${portMongo}`;
+const uri = 'mongodb+srv://adminGraciela:adminFernandez@grafer.klqkvnf.mongodb.net/ecommerce.products'
 
-export const mongoClient = new MongoClient(uri, {
-    authSource: "admin",
-    auth: {
-        username: usernameMongo,
-        password: passwordMongo,
-    }
-})
+//`mongodb+srv://adminGraciela:adminFernandez@grafer.klqkvnf.mongodb.net`;
+
+export const mongoClient = new MongoClient(uri)
 
 await mongoClient.connect();
 
 export const mongoDatabase = mongoClient.db(databaseMongo);
+
+ 
