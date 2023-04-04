@@ -31,7 +31,7 @@ export const generatePaymentLink = async (items, payer, req) => {
         return preference
 
     } catch (error) {
-        console.log(({ message: (error) }))
+        return error
     }
 }
 
