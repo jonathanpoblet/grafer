@@ -17,6 +17,7 @@ const addProductSchema = Yup.object().shape({
     .required("Descripción requerida"),
   price: Yup.number().required("Precio requerido"),
   name: Yup.string().required("Tipo requerido"),
+  pdf: Yup.string().required('Link de PDF requerido')
 });
 
 export default function Panel() {
@@ -27,6 +28,7 @@ export default function Panel() {
     description: "",
     price: "",
     name: "alimentaryPlans",
+    pdf: ""
   };
 
   const uploadImage = async (file) => {
@@ -61,6 +63,7 @@ export default function Panel() {
             if (password.value === "papafrita") {
               const urlImage = await uploadImage(img);
               values.image = urlImage;
+              values.price = parseInt(values.price)
               const request = dispatch(addProductToCollection(values));
               if (request) {
                 toast.success("Producto Cargado", {
@@ -151,7 +154,16 @@ export default function Panel() {
               <div className="panel-form-error">{errors.type}</div>
             ) : null}
 
-            <input type="file" id="img" />
+            <input type="file" id="img"/>
+
+            <Field
+              className="panel-form-field"
+              name="pdf"
+              placeholder="Link PDF"
+            />
+            {errors.pdf && touched.pdf ? (
+              <div className="panel-form-error">{errors.pdf}</div>
+            ) : null}
 
             <button className="panel-form-button" type="submit">
               Añadir producto

@@ -8,9 +8,10 @@ export const createCheckout = async (req, res) => {
       const items = [{
         currency_id: "ARS",
         title: product.title,
-        description: "A Tempo items",
+        description: "Grafer Product",
         quantity: 1,
-        unit_price: 10,
+        unit_price: product.price,
+        pdf: product.prf
       }];
   
       const payer = {

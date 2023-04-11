@@ -36,6 +36,7 @@ export default function Detail() {
       })
       .catch(err => {
         setIsLoadingPay(false);
+        console.log(err);
         toast.error("Se ha producido un error al generar tu pago, intentá en unos minutos", {
           position: "top-right",
           autoClose: 2000,

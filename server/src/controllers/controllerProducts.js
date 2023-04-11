@@ -135,14 +135,14 @@ export async function controllerPostSendProduct(req, res) {
       from: 'Servidor Node.js',
       to: 'jonathanpoblet228@gmail.com',
       subject: 'Compra realizada',
-      html: `<h3>Nueva compra de:</h3><p>Nombre: ${user.name} ${user.surname}</p><p>Email: ${user.email}</p><p>Producto: <br>$ ${product.price} <br>${product.title}</p>`
+      html: `<h3>Nueva compra de:</h3><p>Nombre: ${user.name} ${user.surname}</p><p>Email: ${user.email}</p><p>Producto: ${product.title}</p><p>Precio: ${product.price}</p><a href='${product.pdf}'>Link del producto digital</a>`
   })
 
   await transporter.sendMail({
     from: 'Servidor Node.js',
     to: user.email,
     subject: 'Compra realizada',
-    html: `<h4>Nueva compra</h4><p>Producto: $ ${product.price} ${product.title}</p>`
+    html: `<h4>Nueva compra</h4><p>Felicidades por tu nueva compra! A continuación te dejo los datos del producto y el link para acceder al pdf completo</p><p>Producto: ${product.title}</p><p>Precio: ${product.price}</p><a href='${product.pdf}'>Link del producto digital</a>`
   })
     res.json({ succesfull: "Emails send" });
   } else res.status(404).json({error: 'Faltan datos de envio'});
