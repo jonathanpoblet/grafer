@@ -30,8 +30,8 @@ export const { setProducts, setTool, setDetail } = productSlice.actions;
 export default productSlice.reducer;
 
 export const getAllProducts = () => async (dispatch) => {
-  const products = await getRequest("/api/products");
   try {
+    const products = await getRequest("/api/products");
     await dispatch(setProducts(products));
   } catch (error) {
     console.log(error);
