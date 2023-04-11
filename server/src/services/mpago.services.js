@@ -5,7 +5,7 @@ const clientId = '4093073109802341';
 
 export const generatePaymentLink = async (items, payer, req) => {
 
-    const server = 'http://localhost:5173';
+    const server = 'https://grafer.netlify.app';
     const success = `${server}/success`;
     const failure = `${server}/herramientas-de-nutricion`;
     const pending = `${server}/herramientas-de-nutricion`;

@@ -84,48 +84,6 @@ export async function controllerDeleteProductCollection(req, res) {
   }
 }
 
-export async function controllerPostPurchase(req, res) {
-    mercadopago.configure({
-    access_token: 'TEST-4093073109802341-032912-19a15bb77eeb4a9f1263ae2d3cb51bd8-1341353040',
-  })
-
-  const { user, product } = req.body
-
-  const preference = {
-    binary_mode: true,
-    items: [
-      {
-        id: product.identificator,
-        title: product.title,
-        description: 'Grafer product',
-        picture_url: product.image,
-        quantity: 1,
-        currency_id: "ARS",
-        unit_price: 1
-      }
-    ],
-    payer: {
-      name: user.name,
-      surname: user.surname,
-      email: user.email
-    },
-    back_urls: {
-      success: "http://localhost:5173/success",
-      failure: "http://localhost:5173/failure",
-      pending: "http://localhost:5173/pending"
-    },
-    auto_return: "approved"
-  }
-      
-  mercadopago.preferences.create(preference)
-    .then(function (response) {
-      res.status(200).json({global: response.body.id})
-    })
-    .catch((error) => {
-      res.status(500).json({global: error})
-    })
-    
-}
 
 export async function controllerPostSendProduct(req, res) {
   const product = req.body.product
