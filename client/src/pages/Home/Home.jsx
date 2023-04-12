@@ -1,5 +1,3 @@
-import portada from "../../assets/gra-fondo.png";
-import HomePicture from "../../assets/home-picture.png";
 import { AiFillHeart, AiFillFilePdf, AiFillHourglass } from "react-icons/ai";
 import "./home.css";
 import { Link } from "react-router-dom";
@@ -10,7 +8,7 @@ export default function Home() {
       <div className="home-background">
         <img
           className="home-background-img"
-          src={portada}
+          src='https://res.cloudinary.com/dmx8e4tt0/image/upload/v1681247587/grafer-images/hoxpbirkdadyadgh4gz5.png'
           alt="Portada de inicio"
         />
         <h1 className="home-background-title">
@@ -28,7 +26,7 @@ export default function Home() {
         <div className="home-choseus-container">
           <img
             className="home-choseus-container-img"
-            src={HomePicture}
+            src='https://res.cloudinary.com/dmx8e4tt0/image/upload/v1681303681/grafer-images/yzstc3jr9fk1st9agcid.jpg'
             alt="Imagen porque elegirnos"
           />
           <div className="home-choseus-container-explanation">
@@ -46,7 +44,8 @@ export default function Home() {
               <br />
               <br />
               Toda la información a tu alcance para que la aproveches y empieces
-              tu cambio ahora mismo.
+              tu cambio ahora mismo. Ante una consulta más personalizada no dudes 
+              en escribirme al privado, ya sea via mail, whatsapp o instagram.
             </p>
           </div>
         </div>

@@ -58,7 +58,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  width: 790px;
+  width: 650px;
 }
 
 .home-choseus-container-img {
@@ -141,13 +141,8 @@
     font-size: 40px;
     left: 10%;
   }
-  .home-choseus-container-img {
-    width: 350px;
-    height: 270px;
-    margin-right: 30px;
-  }
   .home-choseus-container-explanation-text {
-    width: 280px;
+    width: 400px;
   }
 }
 
@@ -167,11 +162,12 @@
   }
 
   .home-choseus-container-img {
+    width: 250px;
     margin: 0px 0px 20px 0px;
   }
 
   .home-choseus-container-explanation {
-    width: 350px;
+    width: 250px;
   }
 
   .home-choseus-container-explanation-text {
@@ -204,32 +200,12 @@
     height: 80vh;
   }
 
-  .home-choseus {
-    margin-top: 100px;
-    margin-bottom: 50px;
-  }
-
-  .home-choseus-container-img {
-    width: 280px;
-    height: 230px;
-  }
-
-  .home-choseus-container-explanation {
-    width: 280px;
-  }
-
-  .home-choseus-container-explanation-title {
-    font-size: 17px;
-    text-align: center;
-  }
-
   .home-choseus-container-explanation-text {
-    font-size: 14px;
-    text-align: center;
+    font-size: 15px;
   }
 
   .home-information-container-text {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .home-information-button {

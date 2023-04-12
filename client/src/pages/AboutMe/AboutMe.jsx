@@ -1,4 +1,3 @@
-import Grafer from "../../assets/grafer.png";
 import "./aboutMe.css";
 
 export default function AboutMe() {
@@ -8,7 +7,7 @@ export default function AboutMe() {
       <div className="aboutMe-information">
         <img
           className="aboutMe-information-img"
-          src={Grafer}
+          src='https://res.cloudinary.com/dmx8e4tt0/image/upload/v1681247593/grafer-images/cyrjypk6czczheigl9tn.jpg'
           alt="Graciela Fernandez"
         />
         <p className="aboutMe-information-text">

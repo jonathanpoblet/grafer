@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
-import Logo from "../../assets/logo.svg";
 import "./header.css";
 
 export default function Header() {
@@ -16,7 +15,7 @@ export default function Header() {
       </div>
       <div className="header-navigate">
         <Link to="/">
-          <img className="header-navigate-logo" src={Logo} alt="Logo" />
+          <img className="header-navigate-logo" src='https://res.cloudinary.com/dmx8e4tt0/image/upload/v1681247607/grafer-images/aqqqrtaxmeultiuexs3v.svg' alt="Logo" />
         </Link>
         <div className="header-navigate-nav">
           <Link className="header-navigate-nav-link" to="/">
